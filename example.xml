@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+	<user>
+		<id>1033</id>
+		<name>User One</name>
+		<email>user4@email.com</email>
+		<age>33</age>
+	</user>
+	<user>
+		<id>10123</id>
+		<name>User One</name>
+		<email>user3@email.com</email>
+		<age>34</age>
+	</user>
+	<user>
+		<id>131</id>
+		<name>User One</name>
+		<email>user2@email.com</email>
+		<age>35</age>
+	</user>
+	<user>
+		<id>11</id>
+		<name>User One</name>
+		<email>user1@email.com</email>
+		<age>36</age>
+	</user>
+</users>

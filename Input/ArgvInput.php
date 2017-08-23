@@ -17,7 +17,7 @@ class ArgvInput
     /**
      * Constructor.
      *
-     * @param array|null           $argv       An array of parameters from the CLI (in the argv format)
+     * @param array|null $argv
      */
     public function __construct(array $argv = null)
     {
@@ -77,13 +77,13 @@ class ArgvInput
      */
     public function getFilterFields()
     {
-        return array_filter($this->parsed, function ($key, $value) {
-            if (in_array($key, [InputEnum::PATH_TO_FILE, InputEnum::HELP])) {
+        return array_filter($this->parsed, function ($key) {
+            if (in_array($key, [EnumInput::PATH_TO_FILE, EnumInput::HELP])) {
                 return false;
             }
 
             return true;
-        });
+        }, ARRAY_FILTER_USE_KEY);
     }
 }
 

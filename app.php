@@ -5,10 +5,12 @@ namespace EnormousXml;
 require './autoload.php';
 
 use EnormousXml\Input\ArgvInput;
-use EnormousXml\Service\HandlerCLI;
+use EnormousXml\Service\HandlerCLIService;
 
 $argvInput = new ArgvInput($argv);
-$handlerCLI = new HandlerCLI($argvInput);
-$handlerCLI->run();
-
-
+$handlerCLI = new HandlerCLIService($argvInput);
+$filePath = $handlerCLI->run();
+echo "\n";
+echo "\n";
+echo $filePath;
+echo "\n";
