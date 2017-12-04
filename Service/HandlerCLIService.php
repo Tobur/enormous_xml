@@ -20,31 +20,33 @@ class HandlerCLIService
 
     /**
      * @param ArgvInput $input
+     * @param XmlWriterService $xmlWriterService
      */
-    public function __construct(ArgvInput $input)
+    public function __construct(ArgvInput $input, XmlWriterService $xmlWriterService)
     {
         $this->input = $input;
-        $this->xmlWriter = new XmlWriterService();
+        $this->xmlWriter = $xmlWriterService;
     }
 
     /**
-     * @return string
+     * @param XMLParserHandler $handler
+     * @param XMLParserService $parser
+     * @return bool|string
      */
-    public function run() {
-
+    public function processXML(XMLParserHandler $handler, XMLParserService $parser)
+    {
         $help = $this->input->get(EnumInput::HELP);
-
         if ($help || !$this->input->isArgumentsExist()) {
             MessageHelper::showMessageHelp();
 
             return false;
         }
-
-        $handler = new XMLParserHandler();
         $handler->setOnItemParsedCallback(function ($item) {
             $this->processItem($item);
         });
-        $parser = new XMLParserService($handler);
+        /**
+         * @TODO make tags like argument, not hard code like now
+         */
         $parser->setIgnoreTags(['users', 'user']);
         $parser->setEndTag('user');
         $this->writeHeaderXml();
